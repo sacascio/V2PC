@@ -3,6 +3,7 @@
 use strict;
 use Getopt::Std;
 
+# V2
 my $callsign;
 my $type;
 my $mcip;
