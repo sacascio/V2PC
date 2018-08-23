@@ -10,6 +10,8 @@ warnings.filterwarnings("ignore")
 def usage():
         print "Usage: " +  sys.argv[0] + " -i|--am <IP of AM node>"
         print ""
+        print "This script prints out the MCE"
+        print ""
         print "-i|--amip : IP Address of AM node"
         print "-w|--wf   : Workflow Name"
         print "-h|--help     : Print this help message"
