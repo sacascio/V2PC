@@ -49,8 +49,6 @@ def getchannels(ip,token):
         print "Could not get channel list"
         sys.exit(9) 
 
-    print clist
-    sys.exit(9)
 
 def checkvalidIP(ip,index,addrtype):
     try:
@@ -64,6 +62,10 @@ def loadfile(filename):
     
     with open (filename) as f:
         lines = f.readlines()
+        
+        # Remove duplicates
+        lines = list(set(lines))
+        
         for idx,l in enumerate(lines):
             idx = idx  + 1
             l = l.strip()
@@ -121,9 +123,7 @@ def loadfile(filename):
                 
             else:
                 surl2 = ''
-            
-            
-                    
+               
                 if tmp[0] in rdata:
                     rdata[tmp[0]].append({
                                       'pubname' : tmp[7],  
@@ -149,8 +149,7 @@ def loadfile(filename):
     return rdata
     
 def addchannels(ip,token,strprofiles,idata,currchannels):     
-    
-    print currchannels
+
     headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
     
     for name in idata:
@@ -270,7 +269,6 @@ def main(argv):
     username = "admin"
     password = "default"
   
- 
 
     try:
         opts,args = getopt.getopt(argv,"i:a:f:s:t:h",["masterip=","file=","status=","help"])
@@ -309,7 +307,7 @@ def main(argv):
     idata = loadfile(filename)
     validate_strprofiles(strprofiles,idata)
     addchannels(ip,token,strprofiles,idata,currchannels)
-    
+    print "DONE"
     sys.exit(9)
     
 if __name__ == '__main__':
