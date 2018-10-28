@@ -50,12 +50,6 @@ def getchannels(ip,token):
         sys.exit(9) 
 
 
-def checkvalidIP(ip,index,addrtype):
-    try:
-        IP(ip)
-    except:
-        print "Invalid %s IP address on line %s (%s)" % (addrtype,index,ip)
-        sys.exit(9)
         
 def loadfile(filename):
     rdata = {}
@@ -148,7 +142,7 @@ def loadfile(filename):
          
     return rdata
     
-def addchannels(ip,token,strprofiles,idata,currchannels):     
+def add2lineup(ip,token,strprofiles,idata,currchannels):     
 
     headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
     
@@ -217,52 +211,16 @@ def addchannels(ip,token,strprofiles,idata,currchannels):
         else:
              print "ERROR: %s" % response.json()['error']
 
-def validate_strprofiles(strprofiles,idata):
-    for svc in idata:
-        for str in idata[svc]:
-            if str['pubname'] not in strprofiles:
-                print "Streaming profile name %s is not defined in V2PC.  Please correct input file or V2PC" % str['pubname']
-                sys.exit(9)
 
-def getstrprofiles(ip,token): 
-    profvalues = {}
-        
-    url = "https://%s:8443/api/platform/do/v2/streamprofiles" % (ip)
-    headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
-    response = requests.get(url,headers=headers, verify=False, timeout=30)
-    
-    if response.status_code == 200:
-        for d in response.json():
-            abrname = d['properties']['publishName']
-            abrid   = d['name']
-            
-            if abrname in profvalues:
-                print "ERROR: ABR Profile names must be unique. Found multiple ABR Profiles named %s  Please correct names in V2PC" % pubname
-                sys.exit(9)
-            
-            else:
-                profvalues[abrname] = abrid
-        
-        return profvalues
-    
-    else:
-        print "Could not get streaming profiles"
-        sys.exit(9)       
-        
+
 def usage():
 
-    print " \n\nThe following parameters are required:\n\n \
-        f: Name of input file \n \
-        i: V2PC Master IP \n \
-        h: Help message\n\n \
-        Example: %s -f file.csv -i 10.8.3.25\n\n \
-        Input file format: \n \
-        ChannelName,SourceIP1,MulticastIP1,UDPPort1,SourceIP2,MulticastIP2,UDPPort2,StreamingProfileName \n\n \
-        Optional Parameters: \n \
-        SourceIP1,SourceIP2,MulticastIP2,UDPPort2 \n\n \
-        Required: \n \
-        ChannelName,MulticastIP1,UDPPort1,StreamingProfileName \n\n \
-        ex: TEST6,13.159.0.22,239.192.1.6,5500,,,,725k\n\n" % (sys.argv[0])
+    print " The following parameters are required:\n\n \
+    \
+        f:      Name of input file ( ex. %s -f file.csv )\n \
+        d:      Domain name (ex. -d mos.hcvlny.cv.net)\n \
+        h:      Help message\n\n \
+        Input file format ChannelDescription,Callsign,SourceIP,SD or HD,MulticastIP" % (sys.argv[0])
 
     sys.exit(9)
 
