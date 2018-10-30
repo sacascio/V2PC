@@ -13,7 +13,6 @@ from IPy import IP
 warnings.filterwarnings("ignore")
 
 
-
 def gettoken(ip,un,pw):
 
     url = "https://%s:8443/api/platform/login" % ip
@@ -148,8 +147,8 @@ def loadfile(filename):
          
     return rdata
     
-def addchannels(ip,token,strprofiles,idata,currchannels):     
-
+def addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup,channelsinlug):    
+   
     headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
     
     for name in idata:
@@ -213,10 +212,49 @@ def addchannels(ip,token,strprofiles,idata,currchannels):
         response = requests.post(url,headers=headers, data=json.dumps(data),verify=False, timeout=30)
         if response.status_code == 200:
             print "OK: Service %s added to V2PC" % name  
+            
+            if add2lineup is True:
+                if name not in channelsinlug:
+                    addchanneltolineup(ip,token,name,lineup)
+                else:
+                    print "Channel %s already in line up %s" % lineup
+            
     
         else:
              print "ERROR: %s" % response.json()['error']
 
+def addchanneltolineup(ip,token,name,lineup):
+    headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
+    url = "https://%s:8443/api/platform/do/v2/channellineups/%s" % (ip,lineup)
+    data = {}
+    
+    data["sourceRef" ] = "smtenant_0.smchannelsource.%s" % name
+    data["contentId" ] = name
+    data["customConfigs" ] = []
+    data["customConfigs" ].append(
+                            {
+                              "name": "maxRetryCount",
+                              "value": "-1"
+                            }
+                           )
+          
+    response = requests.get(url,headers=headers,verify=False, timeout=30)
+    gdata = response.json()
+    
+    if len(gdata['properties']['sources']) > 0:
+        gdata['properties']['sources'].append(data)
+    else:
+        gdata['properties']['sources'] = []
+        gdata['properties']['sources'].append(data)
+    
+    response = requests.put(url,headers=headers, data=json.dumps(data),verify=False, timeout=30)
+    
+    if response.status_code == 200:
+            print "OK: Service %s added to lineup %s" % (name,lineup)
+    else:
+            print "ERROR: Could not add service %s to lineup %s"  % (name,lineup)
+    
+    
 def validate_strprofiles(strprofiles,idata):
     for svc in idata:
         for str in idata[svc]:
@@ -224,6 +262,21 @@ def validate_strprofiles(strprofiles,idata):
                 print "Streaming profile name %s is not defined in V2PC.  Please correct input file or V2PC" % str['pubname']
                 sys.exit(9)
 
+def validate_lineup(ip,token,lineup):
+    svcs = []
+    url = "https://%s:8443/api/platform/do/v2/channellineups/%s" % (ip,lineup)
+    headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
+    response = requests.get(url,headers=headers, verify=False, timeout=30)
+    
+    if response.status_code != 200:
+        print "Channel lineup %s not found in V2PC.  Please create it first." % lineup
+        sys.exit(9)
+    else:
+        for d in response.json()['properties']['sources']:
+            svcs.append(d['contentId'])
+    
+        return svcs
+    
 def getstrprofiles(ip,token): 
     profvalues = {}
         
@@ -277,7 +330,7 @@ def main(argv):
   
 
     try:
-        opts,args = getopt.getopt(argv,"i:a:f:s:t:h",["masterip=","file=","status=","help"])
+        opts,args = getopt.getopt(argv,"i:f:l:h",["masterip=","file=","lineup=","help"])
     except getopt.GetoptError as err:
         print str(err)
         sys.exit(2)
@@ -289,6 +342,8 @@ def main(argv):
                 ip = arg
             if opt in ("-f","--filename"):
                 filename = arg
+            if opt in ("-l","--lineup"):
+                lineup = arg
         
 
     try:
@@ -302,17 +357,30 @@ def main(argv):
     except:
         print "Required paramter -f|--filename not passed"
         sys.exit(9)
-                    
+        
+    try:
+        lineup
+    except:
+        add2lineup = False
+    else:
+        add2lineup = True
                     
     if opt == '-h':
         usage()
         
     token = gettoken(ip,username,password)
+    
+    if add2lineup is True:
+        channelsinlug = validate_lineup(ip,token,lineup)
+    else:
+        lineup = ''
+        channelsinlug = []
+        
     currchannels = (getchannels(ip,token))
     strprofiles = getstrprofiles(ip,token)
     idata = loadfile(filename)
     validate_strprofiles(strprofiles,idata)
-    addchannels(ip,token,strprofiles,idata,currchannels)
+    addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup,channelsinlug)
     print "DONE"
     sys.exit(9)
     
