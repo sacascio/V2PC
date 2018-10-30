@@ -45,7 +45,7 @@ def getchannels(ip,token):
         return clist
 
     else:
-        print "Could not get channel list"
+        print "ERROR: Could not get channel list"
         sys.exit(9) 
 
 
@@ -53,7 +53,7 @@ def checkvalidIP(ip,index,addrtype):
     try:
         IP(ip)
     except:
-        print "Invalid %s IP address on line %s (%s)" % (addrtype,index,ip)
+        print "ERROR: Invalid %s IP address on line %s (%s)" % (addrtype,index,ip)
         sys.exit(9)
         
 def loadfile(filename):
@@ -71,18 +71,18 @@ def loadfile(filename):
             tmp = l.split(',') 
             
             if len(tmp) != 8:
-                print "Missing data in line %s of input file.  Please recheck input file" % idx
+                print "ERROR: Missing data in line %s of input file.  Please recheck input file" % idx
                 sys.exit(9)
             
             if tmp[0] == '' :
-                print "Missing service name in input file, line %s" % idx
+                print "ERROR: Missing service name in input file, line %s" % idx
             
             if len(tmp[0]) > 63:
-                print "Service name %s is too long, maximum is 63 characters, %s provided" % (tmp[0],len(tmp[0]))
+                print "ERROR: Service name %s is too long, maximum is 63 characters, %s provided" % (tmp[0],len(tmp[0]))
                 
             for t in tmp[0]:
                 if not t.isalnum() and t != '_' and t != '-':
-                    print "Service %s can only contain alphanumeric characters. Please remove '%s' character" % (tmp[0],t)
+                    print "ERROR: Service %s can only contain alphanumeric characters. Please remove '%s' character" % (tmp[0],t)
                     sys.exit(9)
             
             if tmp[1] != '' :
@@ -92,12 +92,12 @@ def loadfile(filename):
                 sip1 = ''
                 
             if tmp[2] == '' :
-                print "Missing Primary Multicast Address in input file, line %s" % idx
+                print "ERROR: Missing Primary Multicast Address in input file, line %s" % idx
             else:
                  checkvalidIP(tmp[2],idx,"Multicast")
                 
             if tmp[3] == '' :
-                print "Missing UDP Port in input file, line %s" % idx
+                print "ERROR: Missing UDP Port in input file, line %s" % idx
             else:
                 if not int(tmp[3].isdigit()) or int(tmp[3]) < 1024 or int(tmp[3]) > 65535:
                     print "UDP Port %s is not valid on line %s" % (tmp[3],idx)
@@ -114,7 +114,7 @@ def loadfile(filename):
             
             if tmp[6] != '':
                 if not int(tmp[6].isdigit()) or int(tmp[6]) < 1024 or int(tmp[6]) > 65535:
-                    print "UDP Port %s is not valid on line %s" % (tmp[6],idx)
+                    print "ERROR: UDP Port %s is not valid on line %s" % (tmp[6],idx)
                     sys.exit(9)
             
             if tmp[5] != '' and tmp[6] != '':
@@ -147,13 +147,22 @@ def loadfile(filename):
          
     return rdata
     
-def addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup,channelsinlug):    
+def addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup):    
    
     headers = { 'Content-Type':'application/json', 'Authorization' : 'Bearer %s ' % token }
     
     for name in idata:
         if name in currchannels:
-            print "WARNING: Channel %s already exists in V2PC.  Skipping" % name
+            print "WARNING: Channel %s already exists in V2PC." % name
+            
+            if add2lineup is True:
+                channelsinlug = validate_lineup(ip,token,lineup)
+                
+                if name not in channelsinlug:
+                    addchanneltolineup(ip,token,name,lineup)
+                else:
+                    print "WARNING: Channel %s already in line up %s" % (name,lineup)
+                    
             continue
         
         data = {}
@@ -214,10 +223,12 @@ def addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup,channe
             print "OK: Service %s added to V2PC" % name  
             
             if add2lineup is True:
+                channelsinlug = validate_lineup(ip,token,lineup)
+                
                 if name not in channelsinlug:
                     addchanneltolineup(ip,token,name,lineup)
                 else:
-                    print "Channel %s already in line up %s" % lineup
+                    print "WARNING: Channel %s already in line up %s" % lineup
             
     
         else:
@@ -240,6 +251,7 @@ def addchanneltolineup(ip,token,name,lineup):
           
     response = requests.get(url,headers=headers,verify=False, timeout=30)
     gdata = response.json()
+
     
     if len(gdata['properties']['sources']) > 0:
         gdata['properties']['sources'].append(data)
@@ -247,19 +259,20 @@ def addchanneltolineup(ip,token,name,lineup):
         gdata['properties']['sources'] = []
         gdata['properties']['sources'].append(data)
     
-    response = requests.put(url,headers=headers, data=json.dumps(data),verify=False, timeout=30)
+    response = requests.put(url,headers=headers, data=json.dumps(gdata),verify=False, timeout=30)
     
     if response.status_code == 200:
             print "OK: Service %s added to lineup %s" % (name,lineup)
     else:
             print "ERROR: Could not add service %s to lineup %s"  % (name,lineup)
+            print "ERROR: %s" % response.json()
     
     
 def validate_strprofiles(strprofiles,idata):
     for svc in idata:
         for str in idata[svc]:
             if str['pubname'] not in strprofiles:
-                print "Streaming profile name %s is not defined in V2PC.  Please correct input file or V2PC" % str['pubname']
+                print "ERROR: Streaming profile name %s is not defined in V2PC.  Please correct input file or V2PC" % str['pubname']
                 sys.exit(9)
 
 def validate_lineup(ip,token,lineup):
@@ -269,7 +282,7 @@ def validate_lineup(ip,token,lineup):
     response = requests.get(url,headers=headers, verify=False, timeout=30)
     
     if response.status_code != 200:
-        print "Channel lineup %s not found in V2PC.  Please create it first." % lineup
+        print "ERROR: Channel lineup %s not found in V2PC.  Please create it first." % lineup
         sys.exit(9)
     else:
         for d in response.json()['properties']['sources']:
@@ -304,16 +317,18 @@ def getstrprofiles(ip,token):
         
 def usage():
 
-    print " \n\nThe following parameters are required:\n\n \
+    print " \n\n         The following parameters are required:\n\n \
         f: Name of input file \n \
         i: V2PC Master IP \n \
         h: Help message\n\n \
-        Example: %s -f file.csv -i 10.8.3.25\n\n \
+        The following parameters are optional: \n\n \
+        l: Name of lineup to add channel to \n\n \
+        Example: %s -f file.csv -i 10.8.3.25 -l hicksville\n\n \
         Input file format: \n \
         ChannelName,SourceIP1,MulticastIP1,UDPPort1,SourceIP2,MulticastIP2,UDPPort2,StreamingProfileName \n\n \
-        Optional Parameters: \n \
+        Optional Fields: \n \
         SourceIP1,SourceIP2,MulticastIP2,UDPPort2 \n\n \
-        Required: \n \
+        Required Fields: \n \
         ChannelName,MulticastIP1,UDPPort1,StreamingProfileName \n\n \
         ex: TEST6,13.159.0.22,239.192.1.6,5500,,,,725k\n\n" % (sys.argv[0])
 
@@ -362,6 +377,7 @@ def main(argv):
         lineup
     except:
         add2lineup = False
+        lineup = ''
     else:
         add2lineup = True
                     
@@ -369,18 +385,12 @@ def main(argv):
         usage()
         
     token = gettoken(ip,username,password)
-    
-    if add2lineup is True:
-        channelsinlug = validate_lineup(ip,token,lineup)
-    else:
-        lineup = ''
-        channelsinlug = []
         
     currchannels = (getchannels(ip,token))
     strprofiles = getstrprofiles(ip,token)
     idata = loadfile(filename)
     validate_strprofiles(strprofiles,idata)
-    addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup,channelsinlug)
+    addchannels(ip,token,strprofiles,idata,currchannels,lineup,add2lineup)
     print "DONE"
     sys.exit(9)
     
