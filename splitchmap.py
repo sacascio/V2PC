@@ -111,8 +111,11 @@ def main(argv):
     for x in xrange(1,nummaps+1):
         #channelcnt,sd,hd,profilecnt = getmapstats(mapnames + str(x),maps)
         channelcnt,profilecnt,sdcnt,hdcnt,mccnt = getmapstats(mapnames + str(x),maps,sdhd)
-        print str(channelcnt) + "," + str(profilecnt) + "," +  str(sdcnt) + "," +  str(hdcnt) + "," +  str(mccnt) + "," + mapnames + str(x) 
-    
+        print "NUM CH: " + str(channelcnt) + ", NUM PROFILES: " + str(profilecnt) + ", NUM SD CH: " +  str(sdcnt) + ", NUM HD CH:" +  str(hdcnt) + ", NUM MC CH: " +  str(mccnt) + ", MAP NAME: " + mapnames + str(x) 
+        
+        f = open(mapnames + str(x), "w")
+        f.write(json.dumps(maps[mapnames + str(x)], indent = 2)) 
+        f.close()   
     #print json.dumps(maps)
     
 if __name__ == '__main__':
