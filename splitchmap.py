@@ -11,12 +11,31 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+def getmapstats(mapname,data,sdhd):
+    profilecnt = 0
+    sdcnt = 0
+    hdcnt = 0
+    mccnt = 0
+    channelcount = len(data[mapname]['properties']['sources'])
+    for x in data[mapname]['properties']['sources']:
+        channelname =  x['sourceRef']
+        channelname = channelname.replace('smtenant_0.smchannelsource.','')
+        if sdhd[channelname] == 4:
+            sdcnt = sdcnt + 1
+        if sdhd[channelname] == 6:
+            hdcnt = hdcnt + 1
+        if sdhd[channelname] == 1:
+            mccnt = mccnt + 1
+        
+        profilecnt = profilecnt + sdhd[channelname]
+    
+    return channelcount,profilecnt,sdcnt,hdcnt,mccnt
+
 def addtolineup(addtomap,channel,cid,maps):
     
     maps[addtomap]['properties']['sources'].append({'sourceRef' : 'smtenant_0.smchannelsource.%s' % channel, 'contentId' : cid, 'customConfigs' : [{'value': -1, 'name' : 'maxRetryCount'}]})
     return maps
-    #print json.dumps(maps[addtomap])
-    #sys.exit(9)
+    
                                                   
                                                   
 
@@ -89,7 +108,12 @@ def main(argv):
         cid  = cid.replace("-","_")
         maps = addtolineup(addtomap,d,cid,maps)
     
-    print json.dumps(maps)
+    for x in xrange(1,nummaps+1):
+        #channelcnt,sd,hd,profilecnt = getmapstats(mapnames + str(x),maps)
+        channelcnt,profilecnt,sdcnt,hdcnt,mccnt = getmapstats(mapnames + str(x),maps,sdhd)
+        print str(channelcnt) + "," + str(profilecnt) + "," +  str(sdcnt) + "," +  str(hdcnt) + "," +  str(mccnt) + "," + mapnames + str(x) 
+    
+    #print json.dumps(maps)
     
 if __name__ == '__main__':
     main(sys.argv[1:])
