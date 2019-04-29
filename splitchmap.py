@@ -3,7 +3,6 @@
 # script to split channel map into X number of maps evenly based on channel profile
 
 import sys
-import re
 import json
 import os
 import warnings
@@ -46,7 +45,10 @@ def getsdhdmap (channelsources):
     
     for d in data:
         numprofiles =  len(d['properties']['streams'])
-        finalcnt.update({d['name'] : numprofiles})
+        if numprofiles not in [1,4,6]:
+            print "SKIPPING %s, num profiles is %s" %(d['name'], numprofiles)
+        else:
+            finalcnt.update({d['name'] : numprofiles})
         
     return finalcnt
             
