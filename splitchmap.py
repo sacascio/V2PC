@@ -4,7 +4,7 @@
 
 import sys
 import json
-import os
+import getopt
 import warnings
 
 
@@ -55,6 +55,15 @@ def getsdhdmap (channelsources):
         
     return finalcnt
             
+def usage():
+    
+    print " \n\n         The following parameters are required:\n\n \
+        n: Number of channel maps to create.  Must be a digit from 2 to 6 inclusive \n \
+        h: Help message\n \
+        m: Name of map - Map name will have the numbers 1,2,3 etc appended\n\n \
+        Original channel map name (Hicksville) and original channel sources (channelsources) files are \n hardcoded into this script and assumed to be present in the same directory as this script\n\n"
+
+    sys.exit(9)
 
 def initialize_maps(numworkflows,mapname): 
     data = {}
@@ -75,10 +84,44 @@ def initialize_maps(numworkflows,mapname):
     return data
         
 def main(argv):
-      
-    nummaps = 5  
-    mapnames = "map"
     
+    if len(argv) == 0:
+        usage()
+        sys.exit(9)
+    
+    try:
+        opts,args = getopt.getopt(argv,"n:hm:",["num=","help", "map"])
+    except getopt.GetoptError as err:
+        print str(err)
+        sys.exit(2)
+    else:
+        for opt,arg in opts:
+            if opt in ("-h","--help"):
+                usage()
+                sys.exit(9)
+            if opt in ("-n","--num"):
+                nummaps = arg
+                if not nummaps.isdigit() or int(nummaps) < 1 or int(nummaps) > 6:
+                    print "Number of workflows must be numeric and between 2 and 6"
+                    sys.exit(9)
+                else:
+                    nummaps = int(nummaps)
+                    
+            if opt in ("-m","--map"):  
+                mapnames = arg      
+  
+    try:
+        mapnames
+    except:
+        print "Map name is not defined.  Define map name with -m option"
+        sys.exit(9)
+        
+    try:
+        nummaps
+    except:
+        print "Numer of maps is not defined.  Number of maps must be between 2 and 6"
+        sys.exit(9)
+        
     hdnextmap = 1
     sdnextmap = 1
     mcnextmap = 1
