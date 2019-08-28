@@ -1,0 +1,1022 @@
+{
+  "externalId": "/v2/channellineups/wf3", 
+  "properties": {
+    "sources": [
+      {
+        "contentId": "LURB_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LURB-A1"
+      }, 
+      {
+        "contentId": "HC_HD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HC-HD-A1"
+      }, 
+      {
+        "contentId": "JTV_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JTV-A1"
+      }, 
+      {
+        "contentId": "HLDY_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HLDY-A1"
+      }, 
+      {
+        "contentId": "HG_HD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HG-HD-A1"
+      }, 
+      {
+        "contentId": "MLBHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MLBHD-A1"
+      }, 
+      {
+        "contentId": "LCLS_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LCLS-A1"
+      }, 
+      {
+        "contentId": "My9HD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.My9HD-A1"
+      }, 
+      {
+        "contentId": "JAM_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JAM-A1"
+      }, 
+      {
+        "contentId": "LVC_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LVC-A1"
+      }, 
+      {
+        "contentId": "MTRHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MTRHD-A1"
+      }, 
+      {
+        "contentId": "MEGA_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MEGA-A1"
+      }, 
+      {
+        "contentId": "MAXHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MAXHD-A1"
+      }, 
+      {
+        "contentId": "MTV3s_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MTV3s-A1"
+      }, 
+      {
+        "contentId": "MAXLH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MAXLH-A1"
+      }, 
+      {
+        "contentId": "MSET_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MSET-A1"
+      }, 
+      {
+        "contentId": "MCIND_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MCIND-A1"
+      }, 
+      {
+        "contentId": "HBOCH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOCH-A1"
+      }, 
+      {
+        "contentId": "MTVC_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MTVC-A1"
+      }, 
+      {
+        "contentId": "IFCHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.IFCHD-A1"
+      }, 
+      {
+        "contentId": "H2WHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.H2WHD-A1"
+      }, 
+      {
+        "contentId": "Mundo_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.Mundo-A1"
+      }, 
+      {
+        "contentId": "JUSTV_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JUSTV-A1"
+      }, 
+      {
+        "contentId": "LGHT_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LGHT-A1"
+      }, 
+      {
+        "contentId": "LIBRY_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LIBRY-A1"
+      }, 
+      {
+        "contentId": "HBOWH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOWH-A1"
+      }, 
+      {
+        "contentId": "MAX5H_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MAX5H-A1"
+      }, 
+      {
+        "contentId": "MCMAX_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MCMAX-A1"
+      }, 
+      {
+        "contentId": "LOGO_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LOGO-A1"
+      }, 
+      {
+        "contentId": "IDHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.IDHD-A1"
+      }, 
+      {
+        "contentId": "MNBCH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MNBCH-A1"
+      }, 
+      {
+        "contentId": "MMAXH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MMAXH-A1"
+      }, 
+      {
+        "contentId": "MAXWH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MAXWH-A1"
+      }, 
+      {
+        "contentId": "JAZZ_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JAZZ-A1"
+      }, 
+      {
+        "contentId": "JBOX_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JBOX-A1"
+      }, 
+      {
+        "contentId": "iTVN_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.iTVN-A1"
+      }, 
+      {
+        "contentId": "MLBHD_LITCH_MILF_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MLBHD-LITCH-MILF-A1"
+      }, 
+      {
+        "contentId": "MLBHD_HAMIL_ALLEN_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MLBHD-HAMIL-ALLEN-A1"
+      }, 
+      {
+        "contentId": "MURB_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MURB-A1"
+      }, 
+      {
+        "contentId": "HICON_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HICON-A1"
+      }, 
+      {
+        "contentId": "METAL_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.METAL-A1"
+      }, 
+      {
+        "contentId": "LED_LYNBRNY_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LED-LYNBRNY-A1"
+      }, 
+      {
+        "contentId": "MCHIC_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MCHIC-A1"
+      }, 
+      {
+        "contentId": "MBC_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MBC-A1"
+      }, 
+      {
+        "contentId": "LATI_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LATI-A1"
+      }, 
+      {
+        "contentId": "LMN_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LMN-A1"
+      }, 
+      {
+        "contentId": "HSWHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HSWHD-A1"
+      }, 
+      {
+        "contentId": "HDPPV_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HDPPV-A1"
+      }, 
+      {
+        "contentId": "HH_R_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HH-R-A1"
+      }, 
+      {
+        "contentId": "HMDR_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HMDR-A1"
+      }, 
+      {
+        "contentId": "HSNHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HSNHD-A1"
+      }, 
+      {
+        "contentId": "LAFF_HAMIL_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LAFF-HAMIL-A1"
+      }, 
+      {
+        "contentId": "HISTE_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HISTE-A1"
+      }, 
+      {
+        "contentId": "LAFF_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LAFF-A1"
+      }, 
+      {
+        "contentId": "MVIES_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MVIES-A1"
+      }, 
+      {
+        "contentId": "LOCAL_HPPGNY_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LOCAL-HPPGNY-A1"
+      }, 
+      {
+        "contentId": "HPHP_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HPHP-A1"
+      }, 
+      {
+        "contentId": "HSN_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HSN-A1"
+      }, 
+      {
+        "contentId": "HBOFH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOFH-A1"
+      }, 
+      {
+        "contentId": "INTI_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.INTI-A1"
+      }, 
+      {
+        "contentId": "JBS_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JBS-A1"
+      }, 
+      {
+        "contentId": "HOLA_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HOLA-A1"
+      }, 
+      {
+        "contentId": "MGMHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MGMHD-A1"
+      }, 
+      {
+        "contentId": "HITS_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HITS-A1"
+      }, 
+      {
+        "contentId": "HBOHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOHD-A1"
+      }, 
+      {
+        "contentId": "HBOLH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOLH-A1"
+      }, 
+      {
+        "contentId": "MOVMH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MOVMH-A1"
+      }, 
+      {
+        "contentId": "HITN_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HITN-A1"
+      }, 
+      {
+        "contentId": "HSN2_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HSN2-A1"
+      }, 
+      {
+        "contentId": "KIDZ_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.KIDZ-A1"
+      }, 
+      {
+        "contentId": "KIDS_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.KIDS-A1"
+      }, 
+      {
+        "contentId": "LIVEW_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LIVEW-A1"
+      }, 
+      {
+        "contentId": "KIDSC_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.KIDSC-A1"
+      }, 
+      {
+        "contentId": "HCTRY_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HCTRY-A1"
+      }, 
+      {
+        "contentId": "HLN_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HLN-A1"
+      }, 
+      {
+        "contentId": "HFWHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HFWHD-A1"
+      }, 
+      {
+        "contentId": "KBSWD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.KBSWD-A1"
+      }, 
+      {
+        "contentId": "i24FR_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.i24FR-A1"
+      }, 
+      {
+        "contentId": "HALLH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HALLH-A1"
+      }, 
+      {
+        "contentId": "MTVLH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MTVLH-A1"
+      }, 
+      {
+        "contentId": "MEXI_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MEXI-A1"
+      }, 
+      {
+        "contentId": "My17H_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.My17H-A1"
+      }, 
+      {
+        "contentId": "KYWHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.KYWHD-A1"
+      }, 
+      {
+        "contentId": "i24HD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.i24HD-A1"
+      }, 
+      {
+        "contentId": "IMPCT_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.IMPCT-A1"
+      }, 
+      {
+        "contentId": "HIPHP_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HIPHP-A1"
+      }, 
+      {
+        "contentId": "JAMZ_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.JAMZ-A1"
+      }, 
+      {
+        "contentId": "LED_RKVCNY_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LED-RKVCNY-A1"
+      }, 
+      {
+        "contentId": "ITVG_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.ITVG-A1"
+      }, 
+      {
+        "contentId": "MTVHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MTVHD-A1"
+      }, 
+      {
+        "contentId": "INDIE_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.INDIE-A1"
+      }, 
+      {
+        "contentId": "MTV2H_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MTV2H-A1"
+      }, 
+      {
+        "contentId": "LifeH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LifeH-A1"
+      }, 
+      {
+        "contentId": "MSG_H_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MSG-H-A1"
+      }, 
+      {
+        "contentId": "HMMHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HMMHD-A1"
+      }, 
+      {
+        "contentId": "MAVTV_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MAVTV-A1"
+      }, 
+      {
+        "contentId": "HBOZH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOZH-A1"
+      }, 
+      {
+        "contentId": "LOVE_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.LOVE-A1"
+      }, 
+      {
+        "contentId": "HBO2H_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBO2H-A1"
+      }, 
+      {
+        "contentId": "HBOSH_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.HBOSH-A1"
+      }, 
+      {
+        "contentId": "MSGHD_A1", 
+        "customConfigs": [
+          {
+            "name": "maxRetryCount", 
+            "value": -1
+          }
+        ], 
+        "sourceRef": "smtenant_0.smchannelsource.MSGHD-A1"
+      }
+    ], 
+    "description": "", 
+    "mediaArchiveRef": ""
+  }, 
+  "type": "channellineups", 
+  "id": "smtenant_0.smchannellineup.wf3", 
+  "name": "wf3"
+}

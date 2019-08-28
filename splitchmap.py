@@ -25,7 +25,8 @@ def getmapstats(mapname,data,sdhd):
             hdcnt = hdcnt + 1
         if sdhd[channelname] == 1:
             mccnt = mccnt + 1
-        
+        if sdhd[channelname] != 1 and sdhd[channelname] != 6 and sdhd[channelname] != 4:
+            print channelname + ", %s profiles" % sdhd[channelname]
         profilecnt = profilecnt + sdhd[channelname]
     
     return channelcount,profilecnt,sdcnt,hdcnt,mccnt
@@ -42,9 +43,10 @@ def getsdhdmap (channelsources):
     finalcnt = {}
     with open (channelsources) as f:
         data = json.load(f)
+        
     
     for d in data:
-        if len (d['sysMeta']['referringInstances']) == 0:
+        if ('sysMeta' in d  and len (d['sysMeta']['referringInstances']) == 0 ) or 'sysMeta' not in d:
             print "CHANNEL  %s is not in the lineup - SKIPPING" % d['name']
         else:
             numprofiles =  len(d['properties']['streams'])
@@ -52,6 +54,7 @@ def getsdhdmap (channelsources):
                 print "SKIPPING %s, num profiles is %s" %(d['name'], numprofiles)
             else:
                 finalcnt.update({d['name'] : numprofiles})
+        
         
     return finalcnt
             
@@ -131,29 +134,55 @@ def main(argv):
     maps = initialize_maps(nummaps, mapnames)
     
     for d in sdhd:
-        if hdnextmap == nummaps+1:
-            hdnextmap = 1
+        #if hdnextmap == nummaps+1:
+        #    hdnextmap = 1
         
-        if sdnextmap == nummaps+1:
-            sdnextmap = 1   
+        #if sdnextmap == nummaps+1:
+        #    sdnextmap = 1   
             
-        if mcnextmap == nummaps+1:
-            mcnextmap = 1   
+        #if mcnextmap == nummaps+1:
+        #    mcnextmap = 1   
         
-        if sdhd[d] == 1:
-            addtomap = mapnames + str(mcnextmap)
-            mcnextmap = mcnextmap + 1
+        #if sdhd[d] == 1:
+        #    addtomap = mapnames + str(mcnextmap)
+        #    mcnextmap = mcnextmap + 1
             
-        if sdhd[d] == 4:
-            addtomap = mapnames + str(sdnextmap)
-            sdnextmap = sdnextmap + 1
+        #if sdhd[d] == 4:
+        #    addtomap = mapnames + str(sdnextmap)
+        #    sdnextmap = sdnextmap + 1
             
-        if sdhd[d] == 6:
-            addtomap = mapnames + str(hdnextmap)
-            hdnextmap = hdnextmap + 1
+        #if sdhd[d] == 6:
+        #    addtomap = mapnames + str(hdnextmap)
+        #    hdnextmap = hdnextmap + 1
         
         cid = d
         cid  = cid.replace("-","_")
+        firstchar = cid[0]
+        
+        if firstchar.isdigit():
+            addtomap = mapnames + str('1')
+
+        else:
+            firstchar = cid[0].upper()
+
+            if firstchar >= 'A' and firstchar <= 'C':
+                addtomap = mapnames + str('1')
+
+            if firstchar >= 'D' and firstchar <= 'G':
+                addtomap = mapnames + str('2')
+
+            if firstchar >= 'H' and firstchar <= 'M':
+                addtomap = mapnames + str('3')
+
+            if firstchar >= 'N' and firstchar <= 'R':
+                addtomap = mapnames + str('4')
+
+            if firstchar == 'S':
+                addtomap = mapnames + str('5')
+
+            if firstchar >= 'T' and firstchar <= 'Z':
+                addtomap = mapnames + str('6')
+                    
         maps = addtolineup(addtomap,d,cid,maps)
     
     for x in xrange(1,nummaps+1):
