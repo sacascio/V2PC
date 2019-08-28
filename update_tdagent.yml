@@ -1,0 +1,23 @@
+---
+
+ - name: sshd
+   hosts: mce
+   connection: ssh
+   become: true
+
+   tasks:
+   - name: copy td-agent file to MCE in /etc/td-agent/td-agent.conf
+     copy:
+        src: /root/td-agent/td-agent.conf.mce
+        dest: /etc/td-agent/td-agent.conf
+
+   - name: copy td-agent file to MCE in /etc/td-agent/td-agent.conf.v2pc
+     copy:
+        src: /root/td-agent/td-agent.conf.mce
+        dest: /etc/td-agent/td-agent.conf.v2pc
+
+
+   - name: restart td-agent
+     service:
+        name: td-agent
+        state: restarted
