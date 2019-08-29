@@ -1,0 +1,10 @@
+{
+    "type": "appworker",
+    "action": "upgrade",
+    "isoPath": "/root/data/v2p-repo-3.3.6-br_v2pc_3.3.6-17877.iso",
+    "vendorId": "cisco",
+    "masterIp": "10.249.53.41",
+    "ssh_key": "/root/data/v2pcssh.key",
+    "appId": "cisco-ce",
+    "appInstanceId": "MCE"
+}

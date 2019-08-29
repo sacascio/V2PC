@@ -1,0 +1,11 @@
+{
+    "isoPath": "/root/data/v2p-repo-3.3.6-br_v2pc_3.3.6-17877.iso",
+    "type": "appcontroller",
+    "ssh_key": "/root/data/v2pcssh.key",
+    "action": "upgrade",
+    "uihost": "10.249.53.41",
+    "region": "region-0",
+    "pkgtype": "aic",
+    "appid": "cisco-sce",
+    "version": "3.1.39"
+}
