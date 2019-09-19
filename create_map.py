@@ -2,9 +2,7 @@
 
 import sys
 import getopt
-import re
 import json
-import os
 import warnings
 
 
@@ -24,53 +22,45 @@ def create_lineup(filename,lineup):
     gdata['properties']['mediaArchiveRef'] = ''
     gdata['properties']['sources'] = []
 
-    with open (file) as f:
-        lines = f.read().split('\n')
-        c = lines.split(",", lines)
-        name = c[0]
-        cid = c[1]
+    with open (filename) as f:
+        lines = f.read().splitlines()
         
-        for name in lines:
-            data = {}
-            data["sourceRef" ] = "smtenant_0.smchannelsource.%s" % name
-            data["contentId" ] = cid
-            data["customConfigs" ] = []
-            data["customConfigs" ].append(
-                            {
-                              "name": "maxRetryCount",
-                              "value": "-1"
-                            }
-                           )
+    
+    for tname in lines:
+        (name,cid) = tname.split(",")
+        
+        data = {}
+        data["sourceRef" ] = "smtenant_0.smchannelsource.%s" % name
+        data["contentId" ] = cid
+        data["customConfigs" ] = []
+        data["customConfigs" ].append(
+                        {
+                            "name": "maxRetryCount",
+                            "value": "-1"
+                        }
+                        )
           
     
 
     
-            if len(gdata['properties']['sources']) > 0:
-                gdata['properties']['sources'].append(data)
-            else:
-                gdata['properties']['sources'] = []
-                gdata['properties']['sources'].append(data)
+        if len(gdata['properties']['sources']) > 0:
+            gdata['properties']['sources'].append(data)
+        else:
+            gdata['properties']['sources'] = []
+            gdata['properties']['sources'].append(data)
     
     
-    
+    return gdata
 
         
 def usage():
 
     print " \n\n         The following parameters are required:\n\n \
-        f: Name of input file \n \
-        i: V2PC Master IP \n \
+        f: Name of input file - channel name and content ID comma seperated \n \
         h: Help message\n\n \
-        The following parameters are optional: \n\n \
         l: Name of lineup to add channel to \n\n \
-        Example: %s -f file.csv -i 10.8.3.25 -l hicksville\n\n \
-        Input file format: \n \
-        ChannelName,SourceIP1,MulticastIP1,UDPPort1,SourceIP2,MulticastIP2,UDPPort2,StreamingProfileName \n\n \
-        Optional Fields: \n \
-        SourceIP1,SourceIP2,MulticastIP2,UDPPort2 \n\n \
-        Required Fields: \n \
-        ChannelName,MulticastIP1,UDPPort1,StreamingProfileName \n\n \
-        ex: TEST6,13.159.0.22,239.192.1.6,5500,,,,725k\n\n" % (sys.argv[0])
+        Example: %s -f file.csv  -l hicksville\n\n \
+        " % (sys.argv[0])
 
     sys.exit(9)
 
@@ -114,8 +104,8 @@ def main(argv):
         usage()
         
     
-    create_lineup(filename,lineup)
-    print "DONE"
+    gdata = create_lineup(filename,lineup)
+    print json.dumps(gdata,indent = 2)
     sys.exit(9)
     
 if __name__ == '__main__':

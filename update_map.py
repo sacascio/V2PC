@@ -34,7 +34,7 @@ def usage():
 
     print " \n\n         The following parameters are required:\n\n \
         m: Name of channel map file as defined in V2PC in JSON output \n \
-        e: list of channels to drop (exclude list) \n \
+        e: list of channels (content IDs) to drop (exclude list) \n \
         h: Help message\n\n \
         " 
 
