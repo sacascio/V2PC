@@ -33,7 +33,7 @@ def getmapstats(mapname,data,sdhd):
 
 def addtolineup(addtomap,channel,cid,maps):
     
-    maps[addtomap]['properties']['sources'].append({'sourceRef' : 'smtenant_0.smchannelsource.%s' % channel, 'contentId' : cid, 'customConfigs' : [{'value': -1, 'name' : 'maxRetryCount'}]})
+    maps[addtomap]['properties']['sources'].append({'sourceRef' : 'smtenant_0.smchannelsource.%s' % channel, 'contentId' : cid, 'customConfigs' : [{'value': "-1", 'name' : 'maxRetryCount'}]})
     return maps
     
                                                   
