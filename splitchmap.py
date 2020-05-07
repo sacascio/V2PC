@@ -182,8 +182,8 @@ def main(argv):
 
             if firstchar >= 'T' and firstchar <= 'Z':
                 addtomap = mapnames + str('6')
-                    
-        maps = addtolineup(addtomap,d,cid,maps)
+            
+            maps = addtolineup(addtomap,d,cid,maps)
     
     for x in xrange(1,nummaps+1):
         #channelcnt,sd,hd,profilecnt = getmapstats(mapnames + str(x),maps)
